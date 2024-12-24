@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-benchmark
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ai-benchmark
+  template:
+    metadata:
+      labels:
+        app: ai-benchmark
+    spec:
+      containers:
+      - name: ai-benchmark
+        image: ai-benchmark:latest
+        resources:
+          limits:
+            memory: "8Gi"
+            cpu: "4"
+          requests:
+            memory: "4Gi"
+            cpu: "2"
+        env:
+        - name: CUDA_VISIBLE_DEVICES
+          value: "0"
+        volumeMounts:
+        - name: model-storage
+          mountPath: /app/models
+        - name: dataset-storage
+          mountPath: /app/datasets
+      volumes:
+      - name: model-storage
+        persistentVolumeClaim:
+          claimName: model-storage-pvc
+      - name: dataset-storage
+        persistentVolumeClaim:
+          claimName: dataset-storage-pvc 

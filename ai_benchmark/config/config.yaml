@@ -1,0 +1,33 @@
+# General settings
+output_dir: "results"
+log_level: "INFO"
+
+# Model settings
+models:
+  default_device: "cuda"
+  save_checkpoints: true
+  checkpoint_dir: "checkpoints"
+
+# Dataset settings
+datasets:
+  batch_size: 32
+  num_workers: 4
+  pin_memory: true
+
+# Evaluation settings
+evaluation:
+  default_metrics:
+    - accuracy
+    - precision_recall_f1
+  resource_monitoring:
+    enabled: true
+    interval: 1.0  # seconds
+  
+# Visualization settings
+visualization:
+  dashboard:
+    port: 8050
+    debug: true
+  plots:
+    default_style: "plotly"
+    save_format: "html" 

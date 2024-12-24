@@ -1,0 +1,18 @@
+ai_benchmark/
+├── config/
+│   └── config.yaml
+├── core/
+│   ├── __init__.py
+│   ├── evaluator.py
+│   ├── metrics.py
+│   └── pipeline.py
+├── visualization/
+│   ├── __init__.py
+│   ├── dashboard.py
+│   └── plots.py
+├── utils/
+│   ├── __init__.py
+│   └── helpers.py
+├── kubernetes/
+│   └── deployment.yaml
+└── requirements.txt 
